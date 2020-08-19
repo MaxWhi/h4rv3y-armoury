@@ -32,8 +32,12 @@ AddEventHandler("h4rv3y-armoury:takeitem", function(item)
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
     
-    if xPlayer then
-        xPlayer.addInventoryItem(item, 1)
+	if xPlayer then
+		if Config.usingDiscInventory then
+			xPlayer.addInventoryItem(item, 1)
+		else
+			xPlayer.addWeapon(item, Config.ammoAmount)
+		end
     end
 end)
 ---------------------------------------------------------------------------

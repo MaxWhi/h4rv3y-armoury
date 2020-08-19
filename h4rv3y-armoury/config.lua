@@ -4,6 +4,10 @@ Config.PoliceDatabaseName = 'police' -- police job name
 
 Config.DiscordWebook = "INSERT_DISCORD_WEBHOOK_HERE"
 
+Config.usingDiscInventory = true -- Set to fale if you are not using disc-inventoryhud
+
+Config.ammoAmount = 0 -- For if you are not using disc-inventoryhud
+
 Config.Armoury = {
 	PoliceCarbine = {
 		Name = "Carbine Rifle",
