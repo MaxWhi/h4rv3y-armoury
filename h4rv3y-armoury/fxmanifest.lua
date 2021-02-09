@@ -1,6 +1,8 @@
 description 'h4rv3y-admin created by MaxWhi#0770'
 
-version '1.0.0'
+author 'MaxWhi#0770'
+description 'h4rv3y-armoury made for NightWatchRP V1'
+version '1.2.0'
 
 client_scripts {
     "client.lua"

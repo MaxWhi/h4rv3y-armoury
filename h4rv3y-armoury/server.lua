@@ -29,31 +29,31 @@ end
 ---------------------------------------------------------------------------
 RegisterServerEvent("h4rv3y-armoury:takeitem")
 AddEventHandler("h4rv3y-armoury:takeitem", function(item)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    
-	if xPlayer then
-		if Config.usingDiscInventory then
-			xPlayer.addInventoryItem(item, 1)
-		else
-			xPlayer.addWeapon(item, Config.ammoAmount)
-		end
+  local _source = source
+  local xPlayer = ESX.GetPlayerFromId(_source)
+  
+  if xPlayer then
+    if Config.usingDiscInventory then
+      xPlayer.addInventoryItem(item, 1)
+    else
+      xPlayer.addWeapon(item, Config.ammoAmount)
     end
+  end
 end)
 ---------------------------------------------------------------------------
 --- To Discord Webhook
 ---------------------------------------------------------------------------
 RegisterServerEvent('h4vr3y-armoury:sendToDiscord')
 AddEventHandler('h4vr3y-armoury:sendToDiscord', function(itemType)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    local id = ESX.GetPlayerFromId(_source).getIdentifier()
-    local name = getIdentity(_source)
-    fullname = name.firstname  .. ' ' .. name.lastname
-    local DATE = os.date(" %H:%M %d.%m.%y")
+  local _source = source
+  local xPlayer = ESX.GetPlayerFromId(_source)
+  local id = ESX.GetPlayerFromId(_source).getIdentifier()
+  local name = getIdentity(_source)
+  fullname = name.firstname  .. ' ' .. name.lastname
+  local DATE = os.date(" %H:%M %d.%m.%y")
 
-    if xPlayer then
-		local message = "```" ..fullname.. " ["..id.."] | has taken a "..itemType.." from the Police Armory | at "..DATE.."```"
-		PerformHttpRequest(""..Config.DiscordWebook.."", function(err, text, headers) end, 'POST', json.encode({username = "Police Armory", content = message}), { ['Content-Type'] = 'application/json' })
-    end
+  if xPlayer then
+    local message = "```" ..fullname.. " ["..id.."] | has taken a "..itemType.." from the Police Armory | at "..DATE.."```"
+    PerformHttpRequest(""..Config.DiscordWebook.."", function(err, text, headers) end, 'POST', json.encode({username = "Police Armory", content = message}), { ['Content-Type'] = 'application/json' })
+  end
 end)
